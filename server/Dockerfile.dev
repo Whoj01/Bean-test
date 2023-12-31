@@ -12,6 +12,8 @@ RUN useradd -ms /bin/bash server
 
 RUN npx prisma generate
 
+RUN chmod -R 777 /api
+
 USER server
 
 CMD ["npm", "run", "dev"]

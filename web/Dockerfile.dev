@@ -4,12 +4,8 @@ WORKDIR /web
 
 ADD package.json /web
 
-RUN useradd -ms /bin/bash web
-
 RUN npm install
 
 COPY . /web
-
-USER web
 
 CMD ["npm", "run", "dev"]
