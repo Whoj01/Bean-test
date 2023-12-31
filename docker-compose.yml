@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  api: 
+    build: 
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3333:3333
+    depends_on:
+      - database
+    networks:
+      - internal-network
+    volumes:
+      - ./server:/api:delegated
+      - /api/node_modules
+  web: 
+    build: 
+      context: ./web
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    networks:
+      - internal-network
+    volumes:
+      - ./web:/web:delegated
+      - /web/node_modules
+  database:
+    image: postgres
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=2553218858"
+      - "POSTGRES_DB=lumitest"
+    ports:
+      - 5431:5431
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+volumes:
+  pg-data:
+  node_modules: {}
+
+networks:
+  internal-network:
+    driver: bridge

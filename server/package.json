@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec --legacy-watch ts-node  src/index.ts"
+  },
+  "keywords": [],
+  "author": "Josué Dias",
+  "license": "ISC",
+  "description": "App backend desenvolvido para teste do processo seletivo da empresa Bean.",
+  "dependencies": {
+    "@fastify/cors": "^8.5.0",
+    "@prisma/client": "^5.7.1",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.25.2",
+    "jsonwebtoken": "^9.0.2",
+    "pino": "^8.17.2",
+    "pino-pretty": "^10.3.1",
+    "prisma": "^5.7.1",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.10.6",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2"
+  }
+}
