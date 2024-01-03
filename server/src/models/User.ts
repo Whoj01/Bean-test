@@ -3,15 +3,14 @@ import z from "zod";
 const userSchema = z.object({
     id: z.string().cuid(),
     name: z.string(),
-    email: z.string().email(),
     password: z.string().min(6),
-    createdAt: z.date().default(() => new Date()),
-    updatedAt: z.date().default(() => new Date()),
+    token: z.string().optional(),
+    createdAt: z.date().default(() => new Date()).optional(),
+    updatedAt: z.date().default(() => new Date()).optional(),
 }).transform((data) => ({
   id: data.id,
   name: data.name,
-  email: data.email,
-  token: z.string().optional()
+  token: data.token,
 }));
 
 export type InputUser = z.input<typeof userSchema>;
