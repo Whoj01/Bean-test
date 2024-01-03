@@ -22,11 +22,18 @@ export interface HttpResquest<B> {
 	user?: string | JwtPayload;
 }
 
-export type Body<T> = Pick<HttpResquest<T>, "body">;
+export enum statusCode {
+	tryAgainLater = 417,
+	created = 201,
+	ok = 200,
+	unauthorized = 401,
+	badRequest = 400,
+	notFound = 404,
+	internalServerError = 500,
+	notAcceptable = 406,
+}
 
-export type params<T> = Pick<HttpResquest<T>, "params">;
-
-export type requiredFieldsError = HttpResponse<string | null>;
+export type requiredFieldsError = HttpResponse<string>  | null;
 
 export interface IController {
 	handle(httpResquest: HttpResquest<unknown>): Promise<HttpResponse<unknown>>;

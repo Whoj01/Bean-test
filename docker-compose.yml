@@ -12,7 +12,7 @@ services:
     networks:
       - internal-network
     volumes:
-      - ./server:/api:delegated
+      - ./server:/api:cached
       - /api/node_modules
   web: 
     build: 
@@ -23,21 +23,23 @@ services:
     networks:
       - internal-network
     volumes:
-      - ./web:/web:delegated
+      - ./web:/web:cached
       - /web/node_modules
   database:
     image: postgres
+    networks:
+      - internal-network
     environment:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=2553218858"
-      - "POSTGRES_DB=lumitest"
+      - "POSTGRES_DB=beantest"
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
     ports:
-      - 5431:5431
+      - 5432:5432
     volumes:
       - pg-data:/var/lib/postgresql/data
 volumes:
   pg-data:
-  node_modules: {}
 
 networks:
   internal-network:

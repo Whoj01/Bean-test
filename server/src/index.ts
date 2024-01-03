@@ -3,7 +3,7 @@ import cors from "@fastify/cors";
 import { logger } from "./libs/logger";
 import { AddressInfo } from "net";
 import "dotenv/config";
-
+import { UserRoutes } from "./routes/User";
 
 const server: FastifyInstance = Fastify({});
 
@@ -15,10 +15,7 @@ server.register(cors, {
 	allowedHeaders: ["Content-Type", "Authorization"],
 });
 
-server.get("/", async (request, reply) => {
-	return reply.send({ message: "Hello teste" });
-})
-
+server.register(UserRoutes)
 
 const start = async () => {
 	try {
