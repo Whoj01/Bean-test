@@ -10,6 +10,8 @@ COPY . /api
 
 RUN useradd -ms /bin/bash server
 
+RUN npx prisma generate
+
 RUN npx prisma migrate deploy
 
 RUN chmod -R 777 /api
