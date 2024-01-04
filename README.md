@@ -95,7 +95,7 @@ Copie o .env.example o renomenando para .env e ensira essas váriaveis nele:
   SALT=y3Unz
   PEPPER='testevagaBean:)'
 
-  DATABASE_URL=DATABASE_URL="postgresql://postgres:2553218858@database:5432/beantest?schema=public"
+  DATABASE_URL="postgresql://postgres:2553218858@database:5432/beantest?schema=public"
 
 ~~~
 
