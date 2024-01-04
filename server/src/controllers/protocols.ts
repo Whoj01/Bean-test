@@ -1,4 +1,5 @@
 import { JwtPayload } from "jsonwebtoken";
+import { OutputUser } from "../models/User";
 
 export interface HttpResponse<T> {
 	statusCode: number;
@@ -19,7 +20,7 @@ export interface HttpResquest<B> {
 	body?: B;
 	headers?: Headers;
 	params?: B;
-	user?: string | JwtPayload;
+	user?: OutputUser | JwtPayload;
 }
 
 export enum statusCode {

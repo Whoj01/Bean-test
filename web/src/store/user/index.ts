@@ -7,7 +7,7 @@ interface User {
 }
 
 interface stateProps {
-  user: User | {}
+  user: User | null
 }
 
 interface actionsProps {
@@ -36,9 +36,9 @@ export const useUserStore = create<storeProps>((set) => ({
           user: jwtDecodeToken(user)
         },
       })),
-    removeUser: () => set((state) => ({ states: { user: {} } })), 
+    removeUser: () => set((state) => ({ states: { user: null } })), 
   },
   states: {
-    user: {},
+    user: null,
   },
 }))
