@@ -33,9 +33,9 @@ services:
     networks:
       - internal-network
     restart: always
-  jwildernginxproxy:
+  jwildernginxproxy1:
     image: jwilder/nginx-proxy
-    container_name: jwildernginxproxy
+    container_name: jwildernginxproxy1
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     ports:
@@ -50,9 +50,9 @@ services:
     networks:
       - internal-network
     restart: always
-  letsencrypt-nginx-proxy-companion:
+  letsencrypt-nginx-proxy-companion1:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt-nginx-proxy-companion1
     environment:
       - NGINX_PROXY_CONTAINER=jwildernginxproxy
     volumes:
