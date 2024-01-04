@@ -10,7 +10,7 @@ import { Alert, AlertTitle, AlertDescription } from "../ui/alert"
 import { useResponse } from "@/hooks/useResponse"
 import { useCookies } from "@/hooks/useCookies"
 import { useUserStore } from "@/store/user"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const schema = z.object({
   name: z.string().min(3, 'O nome deve ter no mínimo 3 caracteres').max(25, 'O nome deve ter no máximo 25 caracteres'),
@@ -45,7 +45,7 @@ export const CreateAccountForm = () => {
       setCookieToName('token', data.data.token)
       addUser(data.data.token)
       setLoading(false)
-      navigate('/create-team')
+      navigate('/teams/create')
     } catch (error: any) {
       if (error?.response?.status === 406) {
         setMessageToError(error.response.data.msg)

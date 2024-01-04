@@ -1,4 +1,5 @@
 import { useCookies } from "@/hooks/useCookies";
+import { api } from "@/lib/axios";
 import { useUserStore } from "@/store/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ export const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
     if (!isAuthenticated) navigate('/login');
 
     addUser(token)
+    api.defaults.headers['Authorization'] = `Bearer ${token}`
   }, [isAuthenticated, navigate]);
 
   return children;

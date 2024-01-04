@@ -7,20 +7,23 @@ export interface InputProps
   label?: string
   Element?: React.ReactElement
   helperText?: string
+  divStyle?: string
   error?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, Element, error, helperText, label, ...props }, ref) => {
+  ({ className, type, Element, error, helperText, label, divStyle, ...props }, ref) => {
     const inputId = React.useId()
 
     return (
-      <div className="grid  w-full">
-        <label htmlFor={inputId} className="font-inter font-normal text-black-500 text-sm mb-2">
-          {label}
-        </label>
+      <div className="grid w-full">
+        {label && (
+          <label htmlFor={inputId} className="font-inter font-normal text-black-500 text-sm mb-2">
+            {label}
+          </label>
+        )}
 
-        <div data-error={error} className="flex justify-center h-10 gap-3 px-2 w-full border border-input ring-2 ring-black-500/0 focus-within:ring-blue-400 data-[error=true]:ring-red-500 rounded-md items-center transition-all">
+        <div data-error={error} className={cn("flex justify-center h-10 gap-3 px-2 w-full border border-input ring-2 ring-black-500/0 focus-within:ring-blue-400 data-[error=true]:ring-red-500 rounded-md items-center transition-all", divStyle)}>
           {Element}
 
           <input

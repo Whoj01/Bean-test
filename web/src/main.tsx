@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: '/create-team',
+        path: '/teams/create',
         element: <PrivateRoute>
           <CreateTeam />
         </PrivateRoute>,

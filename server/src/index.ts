@@ -4,6 +4,7 @@ import { logger } from "./libs/logger";
 import { AddressInfo } from "net";
 import "dotenv/config";
 import { UserRoutes } from "./routes/User";
+import { TeamRoutes } from "./routes/Team";
 
 const server: FastifyInstance = Fastify({});
 
@@ -16,6 +17,8 @@ server.register(cors, {
 });
 
 server.register(UserRoutes)
+
+server.register(TeamRoutes)
 
 const start = async () => {
 	try {
