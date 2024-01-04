@@ -23,7 +23,7 @@ export class CreateUserController implements IController {
 
       return errorRequest('Não foi possível criar o usuário.', statusCode.tryAgainLater)
     } catch (error: any) {
-      if (error.meta?.target[0] === "name") {
+      if (error.meta?.target?.[0] === "name") {
         return errorRequest("Nome já cadastrado", statusCode.notAcceptable);
       }
 
