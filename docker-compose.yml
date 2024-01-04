@@ -9,7 +9,7 @@ services:
       - 8080:8080
     environment:
       TZ: "America/Sao_Paulo"
-      VIRTUAL_PORT: 3333
+      VIRTUAL_PORT: 8080
       VIRTUAL_HOST: api.beantest.devjosuehub.com.br
       LETSENCRYPT_HOST: api.beantest.devjosuehub.com.br
       LETSENCRYPT_EMAIL: josueneto.camargo@gmail.com
@@ -26,7 +26,7 @@ services:
       - 8000:8000
     environment:
       TZ: "America/Sao_Paulo"
-      VIRTUAL_PORT: 3000
+      VIRTUAL_PORT: 8000
       VIRTUAL_HOST: www.beantest.devjosuehub.com.br, devjosuehub.com.br
       LETSENCRYPT_HOST: www.beantest.devjosuehub.com.br, devjosuehub.com.br
       LETSENCRYPT_EMAIL: josueneto.camargo@gmail.com
