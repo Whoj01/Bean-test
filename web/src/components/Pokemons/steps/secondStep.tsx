@@ -9,6 +9,7 @@ import { useResponse } from "@/hooks/useResponse"
 import { Button } from "@/components/ui/button"
 import { SkeletonPokemonCard } from "../SkeletonPokemonCard"
 import { ModalCreateTeam } from "../ModalCreateTeam"
+import { Link } from "react-router-dom"
 
 
 
@@ -20,7 +21,6 @@ export const SecondStep = () => {
   const [selectedType, setSelectedType] = useState<string>('all')
   const [page, setPage] = useState<number>(1)
   const [selectedPokemons, setSelectedPokemons] = useState<Pokemon[]>([])
-  const [changingType, setChangingType] = useState<boolean>(false)
   const [createTeamModalIsOpen, setCreateTeamModalIsOpen] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
   const [pokemons, setPokemons] = useState<Array<{
@@ -145,6 +145,11 @@ export const SecondStep = () => {
   return (
     <>
       <div className="flex flex-col gap-8 w-full h-full">
+        <Button className="max-w-44 bg-blue-400 hover:bg-blue-400 hover:brightness-75 transition-all flex-grow" asChild>
+          <Link to="/teams">
+            Voltar
+          </Link>
+        </Button>
         <div className="flex items-center justify-start w-full gap-3">
           <Select defaultValue={selectedType} onValueChange={async (e) => await handleChangeType(e)}>
             <SelectTrigger className="max-w-full flex-grow">
@@ -207,7 +212,7 @@ export const SecondStep = () => {
           </h1>
 
           <div className="flex flex-wrap w-full h-full gap-5">
-            {!changingType && pokemons.map((pokemon) => <PokemonCard key={pokemon.name} handleSelectPokemon={handleSelectPokemon} pokemon={pokemon} isPokemonsSelected={selectedPokemons.some(item => item.name === pokemon.name)} />)}
+            {pokemons.map((pokemon) => <PokemonCard key={pokemon.name} handleSelectPokemon={handleSelectPokemon} pokemon={pokemon} isPokemonsSelected={selectedPokemons.some(item => item.name === pokemon.name)} />)}
 
             {pokemons.length === 0 && !loading && (
               <div className="text-center  w-full font-poppins font-bold text-3xl">
@@ -218,7 +223,7 @@ export const SecondStep = () => {
               </div>
             )}
 
-            {loading && new Array(12).fill(null).map((item, index) => <SkeletonPokemonCard key={index} />)}
+            {loading && new Array(12).fill(null).map((item) => <SkeletonPokemonCard key={item} />)}
           </div>
         </div>
 
