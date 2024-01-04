@@ -4,7 +4,6 @@ import { ArrowBigRight, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Skeleton } from "../ui/skeleton"
 import { Button } from "../ui/button"
-import { useResponse } from "@/hooks/useResponse"
 import { Pokemon } from "./PokemonCard"
 
 interface ModalPokemonProps {
@@ -37,18 +36,14 @@ export interface PokemonInfo {
 
 export const ModalPokemon = ({ pokemon: { name, type, principalImage }, setModalPokemonIsOpen, handleSelectedPokemon, isPokemonsSelected }: ModalPokemonProps) => {
   const { getPokemonInfo } = usePokemonsAPI()
-  const { loading, setLoading } = useResponse()
   const [pokemonInfo, setPokemonInfo] = useState<PokemonInfo>()
 
   const getData = async () => {
     try {
-      setLoading(true)
       const data = await getPokemonInfo(name)
 
       setPokemonInfo(data)
-      setLoading(false)
     } catch (error) {
-      setLoading(false)
     }
   }
 

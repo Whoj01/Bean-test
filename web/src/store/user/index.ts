@@ -31,12 +31,12 @@ const jwtDecodeToken =  (token: string) => {
 export const useUserStore = create<storeProps>((set) => ({
   actions: {
     addUser: (user) =>
-      set((state) => ({
+      set(() => ({
         states: {
           user: jwtDecodeToken(user)
         },
       })),
-    removeUser: () => set((state) => ({ states: { user: null } })), 
+    removeUser: () => set(() => ({ states: { user: null } })), 
   },
   states: {
     user: null,

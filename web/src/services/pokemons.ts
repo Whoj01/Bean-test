@@ -1,6 +1,5 @@
 import { api } from "@/lib/axios"
 import axios, { CancelTokenSource } from "axios";
-import { get } from "http"
 
 export const usePokemonsAPI = () => {
   let cancelToken: CancelTokenSource;
